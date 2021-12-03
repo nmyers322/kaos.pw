@@ -1,38 +1,84 @@
+html {
+  background-color: #fff;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.header-text {
+  font-size: calc(24px + 6vmin);
+  color: #fff;
+  margin-top: 10vh;
+  padding: 8px;
+  z-index: 2;
+  text-shadow:1px 1px 10px #fff, 1px 1px 10px #ccc;;
+}
+
+.generated-password-text {
+  font-size: calc(14px + 2vmin);
+  color: #000;
+  margin-top: 15vh;
+  padding: 8px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.chaos-star {
+  min-width: 60vw;
   pointer-events: none;
+  position: absolute;
+  top: -35vh;
+  z-index: -1;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .chaos-star {
+    animation: chaos-star-spin infinite 20s linear;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.chaos-star-container {
+  background-color: #333333;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: absolute;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+@keyframes chaos-star-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
+}
+
+.highlighter {
+    animation: fadeoutBg 1s; /***Transition delay 1s fadeout is class***/
+    -moz-animation: fadeoutBg 1s; /* Firefox */
+    -webkit-animation: fadeoutBg 1s; /* Safari and Chrome */
+    -o-animation: fadeoutBg 1s; /* Opera */
+}
+
+@keyframes fadeoutBg {
+    from { background-color: #888; } /** from color **/
+    to { background-color: white; } /** to color **/
+}
+
+@-moz-keyframes fadeoutBg { /* Firefox */
+    from { background-color: #888; }
+    to { background-color: white; }
+}
+
+@-webkit-keyframes fadeoutBg { /* Safari and Chrome */
+    from { background-color: #888; }
+    to { background-color: white; }
+}
+
+@-o-keyframes fadeoutBg { /* Opera */
+    from { background-color: #888; }
+    to { background-color: white; }
 }
