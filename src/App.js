@@ -1,7 +1,11 @@
 import React from 'react';
 import chaosStar from './chaos_star.svg';
 import './App.css';
+import axios from 'axios';
+import RetroHitCounter from 'react-retro-hit-counter';
 const crypto = require("crypto");
+
+const host = "https://kaos.pw"
 
 const symbolMap = {
   '0': '!',
@@ -39,9 +43,13 @@ const App = () => {
 
   let [generatedPassword, setGeneratedPassword] = React.useState('');
   let [passwordTextClassName, setPasswordTextClassName] = React.useState("generated-password-text");
+  let [visitorNumber, setVisitorNumber] = React.useState("");
 
   React.useEffect(() => {
     setGeneratedPassword(generatePassword());
+    axios.get(host + "/counter.php").then(response => {
+      setVisitorNumber(response.data);
+    });
   }, []);
 
   React.useEffect(() => {
@@ -67,12 +75,36 @@ const App = () => {
       <div className="chaos-star-container">
         <img src={chaosStar} className="chaos-star" alt="chaos star" />
       </div>
-      <p className={passwordTextClassName} onClick={() => {
-        copyToClipboard(generatedPassword);
-        setPasswordTextClassName(passwordTextClassName + ' highlighter');
-      }}>
+      <p 
+        className={passwordTextClassName} 
+        onClick={() => {
+          copyToClipboard(generatedPassword);
+          setPasswordTextClassName(passwordTextClassName + ' highlighter');
+        }}
+      >
         { generatedPassword }
       </p>
+      <p className={passwordTextClassName} onClick={() => setGeneratedPassword(generatePassword())}>
+        regenerate
+      </p>
+      <div className="page-counter">
+        <RetroHitCounter
+          hits={parseInt(visitorNumber)}
+          withBorder={true}
+          withGlow={false}
+          minLength={4}
+          size={10}
+          padding={4}
+          digitSpacing={3}
+          segmentThickness={4}
+          segmentSpacing={0.5}
+          segmentActiveColor="#76FF03"
+          segmentInactiveColor="#315324"
+          backgroundColor="#222222"
+          borderThickness={7}
+          glowStrength={0.5}
+        />
+      </div>
     </div>
   );
 }
