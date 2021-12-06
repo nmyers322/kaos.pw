@@ -61,6 +61,9 @@ const App = () => {
       <p className="header-text">
         kaos.pw
       </p>
+      <p className="description-text">
+        Cryptographically Secure Random Password Generator
+      </p>
       <div className="chaos-star-container">
         <img src={chaosStar} className="chaos-star" alt="chaos star" />
       </div>

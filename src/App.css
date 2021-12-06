@@ -1,5 +1,5 @@
 html {
-  background-color: #fff;
+  background-color: #333;
 }
 
 .App {
@@ -7,12 +7,19 @@ html {
 }
 
 .header-text {
-  font-size: calc(24px + 6vmin);
-  color: #fff;
+  font-size: calc(24px + 10vmin);
+  color: #999;
   margin-top: 10vh;
   padding: 8px;
   z-index: 2;
-  text-shadow:1px 1px 10px #fff, 1px 1px 10px #ccc;;
+}
+
+.description-text {
+  font-size: calc(10px + 1vmin);
+  color: #999;
+  margin-top: 10vh;
+  padding: 8px;
+  z-index: 2;
 }
 
 .generated-password-text {
