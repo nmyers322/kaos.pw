@@ -2,7 +2,6 @@ import React from 'react';
 import chaosStar from './chaos_star.svg';
 import './App.css';
 import axios from 'axios';
-import RetroHitCounter from 'react-retro-hit-counter';
 const crypto = require("crypto");
 
 const host = "https://kaos.pw"
@@ -88,22 +87,7 @@ const App = () => {
         regenerate
       </p>
       <div className="page-counter">
-        <RetroHitCounter
-          hits={parseInt(visitorNumber)}
-          withBorder={true}
-          withGlow={false}
-          minLength={4}
-          size={10}
-          padding={4}
-          digitSpacing={3}
-          segmentThickness={4}
-          segmentSpacing={0.5}
-          segmentActiveColor="#76FF03"
-          segmentInactiveColor="#315324"
-          backgroundColor="#222222"
-          borderThickness={7}
-          glowStrength={0.5}
-        />
+        Visitor number: {visitorNumber}
       </div>
     </div>
   );
