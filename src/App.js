@@ -83,8 +83,8 @@ const App = () => {
       >
         { generatedPassword }
       </p>
-      <p className={passwordTextClassName} onClick={() => setGeneratedPassword(generatePassword())}>
-        regenerate
+      <p className="regenerate-button" onClick={() => setGeneratedPassword(generatePassword())}>
+        &#8635; Regenerate
       </p>
       <div className="page-counter">
         Visitor number: {visitorNumber}

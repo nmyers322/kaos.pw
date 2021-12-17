@@ -9,7 +9,7 @@ html {
 .header-text {
   font-size: calc(24px + 10vmin);
   color: #999;
-  margin-top: 10vh;
+  margin-top: 5vh;
   padding: 8px;
   z-index: 2;
 }
@@ -20,6 +20,7 @@ html {
   margin-top: 10vh;
   padding: 8px;
   z-index: 2;
+  overflow-wrap: break-word;
 }
 
 .generated-password-text {
@@ -33,15 +34,33 @@ html {
 
 .chaos-star {
   min-width: 60vw;
+  max-width: 60vh;
   pointer-events: none;
   position: absolute;
   top: -35vh;
   z-index: -1;
+  overflow: hidden;
+}
+
+.page-counter {
+  color: #0FFF50;
+  font-size: calc(14px + 2vmin);
+  padding: 8px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.regenerate-button {
+  font-size: calc(14px + 2vmin);
+  color: #ccc;
+  padding: 8px;
+  z-index: 2;
+  cursor: pointer;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .chaos-star {
-    animation: chaos-star-spin infinite 20s linear;
+    animation: chaos-star-spin infinite 60s linear;
   }
 }
 
