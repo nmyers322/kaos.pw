@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import axios from 'axios';
 
-const passwordLength = 10;
+const passwordLength = 15;
 const symbolRatio = .2;
 const numberRatio = .2;
 const symbolLength = Math.floor(passwordLength*symbolRatio);
