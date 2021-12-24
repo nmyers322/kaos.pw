@@ -91,6 +91,9 @@ const App = () => {
       <div className="page-counter">
         Visitor number: {visitorNumber}
       </div>
+      <p className="description-text">
+          <a href="https://github.com/nmyers322/kaos.pw">Source code on Github</a>
+      </p>
     </div>
   );
 }
