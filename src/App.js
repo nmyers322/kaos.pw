@@ -1,41 +1,46 @@
 import React from 'react';
-import chaosStar from './chaos_star.svg';
 import './App.css';
 import axios from 'axios';
-const crypto = require("crypto");
+
+const passwordLength = 10;
+const symbolRatio = .2;
+const numberRatio = .2;
+const symbolLength = Math.floor(passwordLength*symbolRatio);
+const numberLength = Math.floor(passwordLength*numberRatio);
 
 const host = "https://kaos.pw"
 
-const symbolMap = {
-  '0': '!',
-  '1': '@',
-  '2': '#',
-  '3': '$',
-  '4': '%',
-  '5': '^',
-  '6': '&',
-  '7': '*',
-  '8': '(',
-  '9': ')',
-  'a': '_',
-  'b': '+',
-  'c': '-',
-  'd': '=',
-  'e': '[',
-  'f': ']',
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+const symbols = "!@#$^&*-_=+<>?";
+
+const randomBit = () => window.crypto.getRandomValues(new Uint8Array(1)) < 128 ? 0 : 1;
+
+const random0To = (max) => {
+  let result = 0;
+  for (let i = 0; i < max; i++) {
+    result += randomBit();
+  }
+  return result;
 }
 
-const randomBit = () => parseInt(crypto.randomBytes(1).toString('hex'), 16) > 127 ? 1 : 0;
-
 const generatePassword = () => {
-  let passwordBuild = crypto.randomBytes(10).toString('hex');
-  for (let i = 0; i < (passwordBuild.length*.25); i++) {
-    passwordBuild += symbolMap[passwordBuild[i]];
+  let result = "", i = 0;
+  
+  for (i = 0; i < (passwordLength - (symbolLength + numberLength)); i++) {
+    result += letters[random0To(letters.length-1)];
   }
 
-  passwordBuild =  passwordBuild.split('').sort(() => 0.5 - randomBit()).join('');
+  for (i = 0; i < symbolLength; i++) {
+    result += symbols[random0To(symbols.length-1)];
+  }
 
-  return passwordBuild;
+  for (i = 0; i < numberLength; i++) {
+    result += random0To(9).toString();
+  }
+
+  result =  result.split('').sort(() => 0.5 - randomBit()).join('');
+
+  return result;
 }
 
 const App = () => {
@@ -69,11 +74,8 @@ const App = () => {
         kaos.pw
       </p>
       <p className="description-text">
-        Cryptographically Secure Random Password Generator
+        <a href="https://w3c.github.io/webcrypto/#Crypto-method-getRandomValues">Cryptographically Secure</a> Random Password Generator
       </p>
-      <div className="chaos-star-container">
-        <img src={chaosStar} className="chaos-star" alt="chaos star" />
-      </div>
       <p 
         className={passwordTextClassName} 
         onClick={() => {
