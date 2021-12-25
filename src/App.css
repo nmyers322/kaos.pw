@@ -1,5 +1,6 @@
 html {
-  background-color: #222;
+  background: rgb(0,0,0);
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(56,56,56,1) 79%, rgba(122,122,122,1) 100%);
 }
 
 .App {
